@@ -1,0 +1,40 @@
+var src = new EventSource("@{FeedR}");
+var lblStatus = document.getElementById('lblStatus');
+var btnLightOff = document.getElementById('btnLightOff');
+var btnLightOn = document.getElementById('btnLightOn');
+
+src.onmessage = function(msg) {
+  if (msg.data == "SwitchOff 1") {
+    return;
+  }
+  if (msg.data == "SwitchOn 1") {
+    return;
+  }
+  if (msg.data[0] == '1') {
+    lblStatus.innerHTML = 'The lights are on.';
+    btnLightOff.style.display = "";
+    btnLightOn.style.display = "none";
+  } else {
+    lblStatus.innerHTML = 'The lights are off.';
+    btnLightOff.style.display = "none";
+    btnLightOn.style.display = "";
+  }
+};
+
+
+btnLightOn.onclick  = turn(0);
+btnLightOff.onclick = turn(0);
+
+function turn(onoroff) {
+  switch(onoroff) {
+  case 0: what = "lightOff"; break;
+  case 1: what = "lightOn";  break;
+  };
+  return function() {
+    xrr = new XmlRpcRequest("@{ControlR}", "post");
+    xrr.addParam(what + "=yes");
+    xrr.send();
+    alert("Oh yeah!");
+    return false;
+  };
+};

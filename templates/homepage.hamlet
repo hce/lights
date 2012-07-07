@@ -1,0 +1,28 @@
+<div class="at-wrapper">
+    <div class="at-70 content">
+        <div class="padding">
+          <h1>_{MsgHello}
+          <h2>_{MsgHelloSub}
+          <p class="intro">_{MsgAppIntro}
+
+          <h3>_{MsgLights}
+          <p>_{MsgLightsExplanation}
+
+          <div class="at-50 item">
+              <div class="padding">
+                  <h4>_{MsgLightsControl}
+                  $if lightsOn
+                    <h4 id=lblStatus>The lights are on.
+                  $else
+                    <h4 id=lblStatus>The lights are off.
+                  <p>
+                      <form method=post action="/control" >
+                          $if lightsOn
+                              <input id=btnLightOn type="submit" name="lightOn" value="_{MsgLightsOn}" style="display: none" />
+                              <input id=btnLightOff type="submit" name="lightOff" value="_{MsgLightsOff}" />
+                          $else
+                              <input id=btnLightOn type="submit" name="lightOn" value="_{MsgLightsOn}" />
+                              <input id=btnLightOff type="submit" name="lightOff" value="_{MsgLightsOff}" style="display: none" />
+
+    <div class="at-30" id="sidebar">
+        <p>_{MsgGreasel}

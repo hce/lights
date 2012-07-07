@@ -1,0 +1,20 @@
+Default: &defaults
+  database: lights.sqlite3
+  poolsize: 10
+
+Development:
+  <<: *defaults
+
+Testing:
+  database: lights_test.sqlite3
+  <<: *defaults
+
+Staging:
+  database: lights_staging.sqlite3
+  poolsize: 100
+  <<: *defaults
+
+Production:
+  database: lights_production.sqlite3
+  poolsize: 100
+  <<: *defaults
